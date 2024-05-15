@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API</title>
+</head>
+<body>
+  <select id="wah"></select>
+
+  <script >
+const apiUrl = 'https://api.goapi.io/regional/provinsi?api_key=a8e63fef-c45d-57ad-3956-9bf70169';
+
+function fetchCountries() {
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(bebas => {
+      const dropdown = document.getElementById('wah');
+      dropdown.innerHTML = '';
+
+
+      bebas.data.forEach(country => {
+        const option = document.createElement('option');
+        option.value = country.id;
+        option.text = country.name;
+        dropdown.add(option);
+      });
+    })
+}
+
+fetchCountries();
+  </script>
+</body>
+</html>
